@@ -21,4 +21,8 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         flutter-version: stable 
+        cache: true
+    - name: Ensure Flutter is Installed
+      run: flutter doctor
+          
 
