@@ -13,9 +13,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: Scaffold(
-          backgroundColor: Colors.black54,
-          body: const Center(child: Text(
+        home: const Scaffold(
+          backgroundColor: Colors.black,
+          body: Center(
+            child: Text(
               'STARKI',
               style: TextStyle(
                   color: Colors.white54,
