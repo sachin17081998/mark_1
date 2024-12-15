@@ -33,3 +33,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MARK_1_AE445 }}
           channelId: live
           projectId: mark-1-ae445
+          entryPoint: app/firebase.json
