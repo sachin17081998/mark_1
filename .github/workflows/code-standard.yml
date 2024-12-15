@@ -26,14 +26,16 @@ jobs:
       with:
         flutter-version: '3.24.3' 
         cache: true
-    
-    - name: Ensure Flutter is Installed
-      run: flutter doctor
-    
-    - name: Verify formatting
-      run: dart format --output=none --set-exit-if-changed .
-    
-    - name: Analyze project source
-      run: flutter analyze  
+    - name: Install Melos
+      run: dart pub global activate melos
+
+    - name: Bootstrap Melos
+      run: melos bootstrap
+
+    - name: Verify Formatting
+      run: melos run format
+
+    - name: Analyze Project Source
+      run: melos run analyze  
           
 
