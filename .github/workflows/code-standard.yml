@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - main
+      - dev
+      - sit
   pull_request:
     branches:
       - main
+      - dev
+      - sit
 
 jobs:
   build:
