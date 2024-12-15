@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.black,
         body: Center(
           child: Text(
-            'STARKI',
+            'STARKI...',
             style: TextStyle(
               color: Colors.white54,
               fontStyle: FontStyle.italic,

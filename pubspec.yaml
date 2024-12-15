@@ -1,0 +1,8 @@
+name: mark_1
+description: Monorepo for the mark_1 project
+version: 1.0.0
+environment:
+  sdk: ^3.5.3 
+
+dev_dependencies:
+  melos: ^6.2.0

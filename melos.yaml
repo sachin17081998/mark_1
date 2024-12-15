@@ -1,0 +1,13 @@
+name: Mark-1
+packages:
+  - app
+  - packages/*
+
+
+scripts:
+  format:
+    run: |
+      dart format --output=none --set-exit-if-changed .
+
+  analyze:
+    run: flutter analyze
