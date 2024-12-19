@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 
 void main() {
@@ -43,7 +44,7 @@ class _TestButtonState extends State<TestButton> {
     });
     final window = html.window.open('https://www.wikipedia.org/', '_blank');
 
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
       if (window.closed!) {
         setState(() {
           isLoading = false;
@@ -66,24 +67,24 @@ class _TestButtonState extends State<TestButton> {
           child: ElevatedButton(
             onPressed: onTap,
             child: isLoading
-                ? CircularProgressIndicator(
+                ? const CircularProgressIndicator(
                     backgroundColor: Colors.blueAccent,
                     valueColor: AlwaysStoppedAnimation(Colors.redAccent),
                     strokeWidth: 10,
                   )
-                : Text(
+                : const Text(
                     'Open Wikepedia',
                     style: TextStyle(color: Colors.black),
                   ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         Text(
           isLoading ? 'Wikipedia is Open' : 'Wikepedia is closed',
-          style: TextStyle(color: Colors.amberAccent),
-        )
+          style: const TextStyle(color: Colors.amberAccent),
+        ),
       ],
     );
   }
