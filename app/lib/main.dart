@@ -69,7 +69,7 @@ class _TestButtonState extends State<TestButton> {
             child: isLoading
                 ? const CircularProgressIndicator(
                     backgroundColor: Colors.blueAccent,
-                    valueColor: AlwaysStoppedAnimation(Colors.redAccent),
+                    valueColor: AlwaysStoppedAnimation(Colors.greenAccent),
                     strokeWidth: 10,
                   )
                 : const Text(
