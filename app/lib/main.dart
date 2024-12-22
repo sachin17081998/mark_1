@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:ds_kit/ds_kit.dart';
 import 'package:flutter/material.dart';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
@@ -14,11 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
-      home: const Scaffold(
-        backgroundColor: Colors.black,
+      theme: Theme.of(context)
+          .copyWith(extensions: [AppColors.dark(), AppText.main()]),
+      themeMode: ThemeMode.dark,
+      home: Scaffold(
+        backgroundColor: Colors.red,
         body: Center(
           child: TestButton(),
         ),
@@ -56,13 +56,17 @@ class _TestButtonState extends State<TestButton> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final extensions = theme.extensions;
+
+    print("Extensions in ThemeData: ${theme.textStyle.special}");
     return Column(
       children: [
         const SizedBox(
           height: 100,
         ),
         SizedBox(
-          height: 50,
+          height: theme.size.s16,
           width: 200,
           child: ElevatedButton(
             onPressed: onTap,
@@ -78,12 +82,44 @@ class _TestButtonState extends State<TestButton> {
                   ),
           ),
         ),
-        const SizedBox(
-          height: 50,
+        SizedBox(
+          height: theme.spacing.s1,
         ),
         Text(
           isLoading ? 'Wikipedia is Open' : 'Wikepedia is closed',
-          style: const TextStyle(color: Colors.amberAccent),
+          style: theme.textStyle.special,
+        ),
+        Text(
+          'Hello, World!',
+          style: theme.textStyle.special,
+        ),
+        Text(
+          'Hello, World!',
+          style: theme.textStyle.specialLargeBold,
+        ),
+        Text(
+          'Hello, World!',
+          style: theme.textStyle.specialMediumSemiBold,
+        ),
+        Text(
+          'Hello, World!',
+          style: theme.textStyle.display,
+        ),
+        Text(
+          'Hello, World!',
+          style: theme.textStyle.headline,
+        ),
+        Text(
+          'Hello, World!',
+          style: theme.textStyle.title,
+        ),
+        Text(
+          'Hello, World!',
+          style: theme.textStyle.body,
+        ),
+        Text(
+          'Hello, World!',
+          style: theme.textStyle.label,
         ),
       ],
     );
