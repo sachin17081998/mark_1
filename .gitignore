@@ -1,0 +1,6 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.pub/
+./app/build/
+.env
+.vscode/
