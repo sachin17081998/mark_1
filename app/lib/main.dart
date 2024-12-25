@@ -3,8 +3,9 @@ import 'package:ds_kit/ds_kit.dart';
 import 'package:flutter/material.dart';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
+import 'package:sanity_service/sanity_client.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -54,10 +55,43 @@ class _TestButtonState extends State<TestButton> {
     });
   }
 
+  Future<void> fetchSinglePost() async {
+    const query = '*[_type == "about"]';
+
+    try {
+      final post = await SanityService.instance.fetchSingleDocument<Post>(
+        query: query,
+        fromJson: (json) => Post.fromJson(json),
+      );
+
+      if (post != null) {
+        print('Title: ${post.title}, Body: ${post.body}');
+      } else {
+        print('No document found.');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('''
+project: ${const String.fromEnvironment('PROJECT_ID')}
+        apiVersion: ${const String.fromEnvironment('API_VERSION')},
+        dataset: ${const String.fromEnvironment('DATA_SET')},
+        token: ${const String.fromEnvironment('TOKEN')}
+''');
+    SanityService.instance.initialize(
+        projectId: const String.fromEnvironment('PROJECT_ID'),
+        apiVersion: const String.fromEnvironment('API_VERSION'),
+        dataset: const String.fromEnvironment('DATA_SET'),
+        token: const String.fromEnvironment('TOKEN'));
     final theme = Theme.of(context);
     final extensions = theme.extensions;
+    fetchSinglePost().then(
+      (value) => print('post fetched'),
+    );
 
     print("Extensions in ThemeData: ${theme.textStyle.special}");
     return Column(
@@ -122,6 +156,20 @@ class _TestButtonState extends State<TestButton> {
           style: theme.textStyle.label,
         ),
       ],
+    );
+  }
+}
+
+class Post {
+  final String title;
+  final String body;
+
+  Post({required this.title, required this.body});
+
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+      title: json['title'],
+      body: json['body'],
     );
   }
 }

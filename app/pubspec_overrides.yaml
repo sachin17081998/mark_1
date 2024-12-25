@@ -1,4 +1,7 @@
+# melos_managed_dependency_overrides: sanity_service
 # melos_managed_dependency_overrides: ds_kit
 dependency_overrides:
   ds_kit:
     path: ..\\packages\\ds_kit
+  sanity_service:
+    path: ..\\packages\\sanity_service
