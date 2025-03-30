@@ -4,3 +4,20 @@
 ./app/build/
 .env
 .vscode/
+
+
+# Ignore generated native files
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/
+**/android/.cxx/
+**/android/app/debug.keystore
+**/android/build/
+**/android/.gradle/
+**/*.cmake
+**/*.cc
+**/*.h
+**/*.sh
+**/*.swift
+**/*.xml
+**/*.lock
