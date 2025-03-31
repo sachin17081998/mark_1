@@ -14,22 +14,22 @@ class ErrorScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.error_outline, color: Colors.white, size: 50),
-            SizedBox(height: 20),
-            Text(
-              "An error occurred!",
+            const Icon(Icons.error_outline, color: Colors.white, size: 50),
+            const SizedBox(height: 20),
+            const Text(
+              'An error occurred!',
               style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               errorMessage,
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white70, fontSize: 16),
+              style: const TextStyle(color: Colors.white70, fontSize: 16),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: onRetry,
-              child: Text("Retry"),
+              child: const Text("Retry"),
             ),
           ],
         ),

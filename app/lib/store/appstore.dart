@@ -18,6 +18,13 @@ class AppStore {
 //Page related observers
   Observable<About?> aboutData = Observable(null);
 
+//componenet related observables
+Observable<int> currentPageIndex = Observable(0);  
+Observable<bool> makeDesktopNavSticky=Observable(false);
+
+Observable<bool> startDesktopNavAnimation=Observable(false);
+
+
   void setStoreInitilization(bool value) {
     runInAction(() {
       isStoreInitilized.value = value;
@@ -36,6 +43,23 @@ class AppStore {
     });
   }
 
+  void setCurrentPageIndex(int value) {
+    runInAction(() {
+      currentPageIndex.value = value;
+    });
+  }
+
+  void setDestopNavSticky(bool value) {
+    runInAction(() {
+      makeDesktopNavSticky.value = value;
+    });
+  }
+
+  void triggerDesktopNavAnimation(bool value) {
+    runInAction(() {
+      startDesktopNavAnimation.value = value;
+    });
+  }
   Future<void> initializeStore() async {
     try {
       _initializeSanity();

@@ -1,38 +1,42 @@
 import 'package:flutter/material.dart';
 
 class AppColors extends ThemeExtension<AppColors> {
-  static const _black = Color(0xff070707);
-  static const _green = Color(0xff7fd4bc);
-  static const _white = Color(0xfffeffff);
-  // static const _green100 = Color(0xff7ed3bb);
-  static const _green200 = Color(0xff6c8a82);
+  static const _black = Color(0xff131313);
+  static const _red = Color(0xffff0505);
+  static const _white = Color(0xffffffff);
+  static const _secondaryBlack = Color(0xff484848);
+  static const _secondaryWhite = Color.fromARGB(255, 240, 236, 236);
 
-  final Color primaryBackground;
-  final Color onPrimaryBackground;
+  ///[primary] main color of the app to highlight subject
+  ///[secondary] color to highlight main details of the subject
+  ///[tertiary] color to highlight sub details of the subject
+  ///[background] app background color
+  final Color primary;
   final Color secondary;
   final Color tertiary;
+  final Color background;
 
   const AppColors._internal({
-    required this.primaryBackground,
-    required this.onPrimaryBackground,
+    required this.primary,
+    required this.background,
     required this.secondary,
     required this.tertiary,
   });
 
   factory AppColors.dark() {
     return const AppColors._internal(
-        primaryBackground: _black,
-        onPrimaryBackground: _white,
-        secondary: _green,
-        tertiary: _green200);
+        primary: _red,
+        background: _black,
+        secondary: _white,
+        tertiary: _secondaryWhite);
   }
 
   factory AppColors.light() {
     return const AppColors._internal(
-        primaryBackground: _white,
-        onPrimaryBackground: _black,
-        secondary: _green,
-        tertiary: _green200);
+        primary: _red,
+        background: _white,
+        secondary: _black,
+        tertiary: _secondaryBlack);
   }
 
   @override
@@ -51,10 +55,8 @@ class AppColors extends ThemeExtension<AppColors> {
     if (other is! AppColors) return this;
 
     return AppColors._internal(
-      primaryBackground:
-          Color.lerp(primaryBackground, other.primaryBackground, t)!,
-      onPrimaryBackground:
-          Color.lerp(onPrimaryBackground, other.onPrimaryBackground, t)!,
+      primary: Color.lerp(primary, other.primary, t)!,
+      background: Color.lerp(background, other.background, t)!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
       tertiary: Color.lerp(tertiary, other.tertiary, t)!,
     );

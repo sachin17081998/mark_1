@@ -5,6 +5,7 @@ class AppText extends ThemeExtension<AppText> {
   static const _special = 'IndieFlower';
 
   // Define all the text styles for the tokens
+  final TextStyle cover;
   final TextStyle display;
   final TextStyle displayBold;
   final TextStyle displaySemiBold;
@@ -39,6 +40,7 @@ class AppText extends ThemeExtension<AppText> {
   final TextStyle specialLargeSemiBold;
 
   const AppText._internal({
+    required this.cover,
     required this.display,
     required this.displayBold,
     required this.displaySemiBold,
@@ -67,6 +69,13 @@ class AppText extends ThemeExtension<AppText> {
 
   factory AppText.main() {
     return const AppText._internal(
+      cover:TextStyle(
+        fontFamily: _baseFamily,
+        package: 'ds_kit',
+        fontSize: 264,
+        fontWeight: FontWeight.w900,
+        letterSpacing: 50
+      ) ,
       display: TextStyle(
         fontFamily: _baseFamily,
         package: 'ds_kit',
@@ -216,6 +225,7 @@ class AppText extends ThemeExtension<AppText> {
 
   @override
   ThemeExtension<AppText> copyWith({
+    TextStyle? cover,
     TextStyle? display,
     TextStyle? displayBold,
     TextStyle? displaySemiBold,
@@ -242,6 +252,7 @@ class AppText extends ThemeExtension<AppText> {
     TextStyle? specialLargeSemiBold,
   }) {
     return AppText._internal(
+      cover: cover ?? this.cover,
       display: display ?? this.display,
       displayBold: displayBold ?? this.displayBold,
       displaySemiBold: displaySemiBold ?? this.displaySemiBold,
@@ -274,6 +285,7 @@ class AppText extends ThemeExtension<AppText> {
     if (other is! AppText) return this;
 
     return AppText._internal(
+       cover: TextStyle.lerp(cover, other.cover, t) ?? cover,
       display: TextStyle.lerp(display, other.display, t) ?? display,
       displayBold: TextStyle.lerp(displayBold, other.displayBold, t) ?? displayBold,
       displaySemiBold: TextStyle.lerp(displaySemiBold, other.displaySemiBold, t) ?? displaySemiBold,
