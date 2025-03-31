@@ -4,7 +4,7 @@ import 'package:mark_1/api/models/about.dart';
 import 'package:sanity_service/sanity_client.dart';
 
 class Api {
-  static Future<void> fetchAbout() async {
+  static Future<About?> fetchAbout() async {
     const query = '*[_type == "about"]';
 
     try {
@@ -12,17 +12,19 @@ class Api {
       //   query: query,
       //   fromJson: (json) => About.fromJson(json),
       // );
-      
+
       await Future.delayed(Duration(seconds: 2));
       final data=About.fromJson(jsonDecode(mockAbout));
       if (data != null) {
         print('Title: ${data.firstName}, Body: ${data.lastName}');
+        return data;
       } else {
         print('No document found.');
       }
     } catch (e) {
       print('Error: $e');
     }
+    return null;
   }
 }
 

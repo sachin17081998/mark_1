@@ -1,0 +1,61 @@
+import 'package:flutter/widgets.dart';
+import 'package:mark_1/api/api.dart';
+import 'package:mark_1/api/models/about.dart';
+import 'package:mobx/mobx.dart';
+import 'package:sanity_service/sanity_client.dart';
+
+class AppStore {
+  AppStore() {
+    // Initialize any necessary data or services here
+    // For example, you can initialize a database connection or an API client
+    initializeStore();
+  }
+
+//App related observers
+  Observable<bool> isStoreInitilized = Observable(false);
+  Observable<String?> errorMessage = Observable(null);
+
+//Page related observers
+  Observable<About?> aboutData = Observable(null);
+
+  void setStoreInitilization(bool value) {
+    runInAction(() {
+      isStoreInitilized.value = value;
+    });
+  }
+
+  void setErrorMessage(String? value) {
+    runInAction(() {
+      errorMessage.value = value;
+    });
+  }
+
+  void setAboutData(About? value) {
+    runInAction(() {
+      aboutData.value = value;
+    });
+  }
+
+  Future<void> initializeStore() async {
+    try {
+      _initializeSanity();
+      final about = await Api.fetchAbout();
+      setAboutData(about);
+      setStoreInitilization(true);
+      setErrorMessage(null);
+    } catch (e) {
+      debugPrint('[Mark_1][AppStore] Error: $e');
+      setErrorMessage('Unable to launcg the App');
+      setStoreInitilization(false);
+    }
+  }
+
+  void _initializeSanity() {
+    SanityService.instance.initialize(
+      projectId: const String.fromEnvironment('PROJECT_ID'),
+      apiVersion: const String.fromEnvironment('API_VERSION'),
+      dataset: const String.fromEnvironment('DATA_SET'),
+      token: const String.fromEnvironment('TOKEN'),
+    );
+  }
+}
