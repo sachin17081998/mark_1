@@ -1,0 +1,22 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.pub/
+./app/build/
+.env
+.vscode/
+
+
+# Ignore generated native files
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/
+**/android/.cxx/
+**/android/app/debug.keystore
+**/android/build/
+**/android/.gradle/
+**/*.cmake
+**/*.cc
+**/*.h
+**/*.sh
+**/*.swift
+**/*.xml

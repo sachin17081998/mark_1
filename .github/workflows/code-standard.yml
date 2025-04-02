@@ -20,6 +20,9 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
+      with:
+        submodules: true
+        fetch-depth: 0
 
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
@@ -29,7 +32,13 @@ jobs:
         
     - name: Install Melos
       run: dart pub global activate melos
+    
+    - name: Debug Folder Structure
+      run: ls -R
 
+    - name: Clean Melos
+      run: melos clean
+    
     - name: Bootstrap Melos
       run: melos bootstrap
 
