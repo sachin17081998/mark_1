@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:mark_1/api/api.dart';
 import 'package:mark_1/api/models/about.dart';
 import 'package:mobx/mobx.dart';
@@ -14,6 +14,7 @@ class AppStore {
 //App related observers
   Observable<bool> isStoreInitilized = Observable(false);
   Observable<String?> errorMessage = Observable(null);
+  Observable<ThemeMode> appTheme = Observable(ThemeMode.light);
 
 //Page related observers
   Observable<About?> aboutData = Observable(null);
@@ -58,6 +59,16 @@ Observable<bool> startDesktopNavAnimation=Observable(false);
   void triggerDesktopNavAnimation(bool value) {
     runInAction(() {
       startDesktopNavAnimation.value = value;
+    });
+  }
+
+  void toggleTheme(){
+    runInAction(() {
+      if(appTheme.value == ThemeMode.light) {
+        appTheme.value = ThemeMode.dark;
+      } else {
+        appTheme.value = ThemeMode.light;
+      }
     });
   }
   Future<void> initializeStore() async {

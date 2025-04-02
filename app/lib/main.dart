@@ -19,39 +19,60 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final store = di<AppStore>();
 
-    return MaterialApp(
-      theme: ThemeData.light().copyWith(
-    extensions: [AppText.main()], // Use light theme
-  ),
-  darkTheme: ThemeData.dark().copyWith(
-    extensions: [AppColors.dark(), AppText.main()], // Use dark theme
-  ),
-  themeMode: ThemeMode.light, // Force light mode
-      home: Observer(
-        builder: (_) {
-         
-          // Show loading indicator while initializing
-          if (!store.isStoreInitilized.value && store.errorMessage.value == null) {
-            return const Scaffold(
-              backgroundColor: Colors.red,
-              body: Center(child: CircularProgressIndicator()),
-            );
-          }
+    return Observer(
+      builder: (context) {
+        return AnimatedSwitcher(
+           duration: const Duration(milliseconds: 800),switchInCurve:Curves.easeIn,switchOutCurve: Curves.easeOut,  
+          child: MaterialApp(
+             key: ValueKey<bool>(store.appTheme.value == ThemeMode.light),
+            theme: ThemeData.light().copyWith(
+          extensions: [AppText.main()], // Use light theme
+            ),
+            darkTheme: ThemeData.dark().copyWith(
+          extensions: [AppColors.dark(), AppText.main()], // Use dark theme
+            ),
+            themeMode: store.appTheme.value, // Force light mode
+            home: const RootApp(),
+          ),
+        );
+      },
+    );
+  }
+}
 
-          // Show error screen if initialization failed
-          if (store.errorMessage.value != null) {
-            return ErrorScreen(
-              errorMessage: store.errorMessage.value!,
-              onRetry: () => store.initializeStore(), // Retry logic
-            );
-          }
+class RootApp extends StatelessWidget {
+  const RootApp({
+    super.key,
+  });
 
-          // Show the main content if everything is loaded
+
+  @override
+  Widget build(BuildContext context) {
+      final store = di<AppStore>();
+    return Observer(
+      builder: (_) {
+       
+        // Show loading indicator while initializing
+        if (!store.isStoreInitilized.value && store.errorMessage.value == null) {
           return const Scaffold(
-            body:MainScreen(),
+            backgroundColor: Colors.red,
+            body: Center(child: CircularProgressIndicator()),
           );
-        },
-      ),
+        }
+            
+        // Show error screen if initialization failed
+        if (store.errorMessage.value != null) {
+          return ErrorScreen(
+            errorMessage: store.errorMessage.value!,
+            onRetry: () => store.initializeStore(), // Retry logic
+          );
+        }
+            
+        // Show the main content if everything is loaded
+        return const Scaffold(
+          body:MainScreen(),
+        );
+      },
     );
   }
 }

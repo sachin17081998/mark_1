@@ -5,6 +5,7 @@ import 'package:mark_1/di/di.dart';
 import 'package:mark_1/store/appstore.dart';
 import 'package:mark_1/ui/components/desktop_nav_bar.dart';
 import 'package:mark_1/ui/components/progress_indicator.dart';
+import 'package:mark_1/ui/components/theme_switch.dart';
 import 'package:mark_1/ui/pages/about/about.dart';
 import 'package:mark_1/ui/pages/home/homepage.dart';
 import 'package:mark_1/ui/pages/qualifications/qualifications.dart';
@@ -94,10 +95,11 @@ class _MainScreenState extends State<MainScreen> {
             },
           ),
         ),
-        Observer(builder: (context) {
-          if (store.makeDesktopNavSticky.value &&
-              store.currentPageIndex.value > 1) {
-            return Positioned(
+        Observer(
+          builder: (context) {
+            if (store.makeDesktopNavSticky.value &&
+                store.currentPageIndex.value > 1) {
+              return Positioned(
                 top: 0,
                 child: Container(
                   decoration: BoxDecoration(
@@ -106,20 +108,18 @@ class _MainScreenState extends State<MainScreen> {
                   child: const NavItems(
                     withAnimation: false,
                   ),
-                ));
-          }
+                ),
+              );
+            }
 
-          return const SizedBox.shrink();
-        })
-        //      Observer(builder: (context) {
-        //   return AnimatedPositioned(duration: Duration(milliseconds: 500),
-        //     left: 0,
-        //     right: 0,
-        //     bottom: store.currentPageIndex.value > 0 ? null : 50, // Initially at bottom
-        //     top: store.currentPageIndex.value > 0 ? 0 : null, // Stick to top after scrolling
-        //     child: NavItems(),
-        //   );
-        // }),
+            return const SizedBox.shrink();
+          },
+        ),
+        const Positioned(
+          left: 16,
+          top: 20,
+          child: ThemeSwitch(),
+        )
       ],
     );
   }

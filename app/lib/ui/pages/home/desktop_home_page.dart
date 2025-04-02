@@ -2,6 +2,7 @@ import 'package:ds_kit/ds_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:mark_1/di/di.dart';
 import 'package:mark_1/store/appstore.dart';
+import 'package:mark_1/ui/components/desktop_contact_links.dart';
 import 'package:mark_1/ui/components/desktop_nav_bar.dart';
 import 'package:mark_1/ui/ux/fadein.dart';
 import 'package:mark_1/ui/ux/parallax.dart';
@@ -150,7 +151,13 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                 },
                 key: UniqueKey(),
                 child: const NavItems()),
-          )
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding:  EdgeInsets.symmetric(horizontal: theme.spacing.s32),  
+              child: const DesktopContactLinks(),
+            ))
         ],
       ),
     );
