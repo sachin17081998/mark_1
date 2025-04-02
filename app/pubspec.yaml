@@ -31,9 +31,9 @@ dependencies:
   flutter:
     sdk: flutter
   ds_kit:
-    path: ../packages/ds_kit
+    path: ..\\packages\\ds_kit
   sanity_service:
-    path: ../packages/sanity_service
+    path: ..\\packages\\sanity_service
   json_annotation: ^4.8.1
   mobx: ^2.2.0
   flutter_mobx: ^2.1.0
