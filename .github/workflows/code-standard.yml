@@ -30,6 +30,9 @@ jobs:
     - name: Install Melos
       run: dart pub global activate melos
     
+    - name: Debug Folder Structure
+      run: ls -R
+
     - name: Clean Melos
       run: melos clean
     
