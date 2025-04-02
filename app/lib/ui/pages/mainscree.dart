@@ -119,7 +119,7 @@ class _MainScreenState extends State<MainScreen> {
           left: 16,
           top: 20,
           child: ThemeSwitch(),
-        )
+        ),
       ],
     );
   }

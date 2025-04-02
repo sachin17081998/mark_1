@@ -47,57 +47,62 @@ class ThemeSwitchState extends State<ThemeSwitch>
         bool isLightTheme = store.appTheme.value == ThemeMode.light;
 
         return GestureDetector(
-            onTap: () => _toggleTheme(store),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              width: theme.size.s16,
-              height: theme.size.s8,
-              decoration: BoxDecoration(
-                color: theme.colors.background,
-                borderRadius: BorderRadius.circular(35),
-                boxShadow: [
-                  // Inner shadow for depth effect
-                  BoxShadow(
-                    color: isLightTheme ? Colors.white : Colors.black54,
-                    offset: const Offset(-4, -4),
-                    blurRadius: 10,
-                  ),
-                  BoxShadow(
-                    color: isLightTheme ? Colors.grey[600]! : Colors.black,
-                    offset: const Offset(4, 4),
-                    blurRadius: 10,
-                  ),
-                  // Outer glow effect based on theme
-                  BoxShadow(
-                    // color: theme.colors.primary.withValues(alpha:_glowAnimation.value * 0.6),
-                    color: isLightTheme
-                        ? Colors.yellow
-                            .withValues(alpha: _glowAnimation.value * 0.6)
-                        : Colors.blueAccent
-                            .withValues(alpha: _glowAnimation.value * 0.6),
-                    blurRadius: 30 * _glowAnimation.value,
-                    spreadRadius: 10 * _glowAnimation.value,
-                  ),
-                ],
-              ),
-              child: Center(
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 300),
-                  // transitionBuilder: (child, animation) {
-                  //   return ScaleTransition(scale: animation, child: child);
-                  // },
-                  child: isLightTheme
-                      ? Icon(Icons.wb_sunny,
-                          key: const ValueKey("sun"),
-                          size: theme.size.s6,
-                          color: Colors.orange)
-                      : Icon(Icons.nightlight_round,
-                          key: const ValueKey("moon"),
-                          size: theme.size.s6,
-                          color: Colors.blueAccent),
+          onTap: () => _toggleTheme(store),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            width: theme.size.s16,
+            height: theme.size.s8,
+            decoration: BoxDecoration(
+              color: theme.colors.background,
+              borderRadius: BorderRadius.circular(35),
+              boxShadow: [
+                // Inner shadow for depth effect
+                BoxShadow(
+                  color: isLightTheme ? Colors.white : Colors.black54,
+                  offset: const Offset(-4, -4),
+                  blurRadius: 10,
                 ),
+                BoxShadow(
+                  color: isLightTheme ? Colors.grey[600]! : Colors.black,
+                  offset: const Offset(4, 4),
+                  blurRadius: 10,
+                ),
+                // Outer glow effect based on theme
+                BoxShadow(
+                  // color: theme.colors.primary.withValues(alpha:_glowAnimation.value * 0.6),
+                  color: isLightTheme
+                      ? Colors.yellow
+                          .withValues(alpha: _glowAnimation.value * 0.6)
+                      : Colors.blueAccent
+                          .withValues(alpha: _glowAnimation.value * 0.6),
+                  blurRadius: 30 * _glowAnimation.value,
+                  spreadRadius: 10 * _glowAnimation.value,
+                ),
+              ],
+            ),
+            child: Center(
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                // transitionBuilder: (child, animation) {
+                //   return ScaleTransition(scale: animation, child: child);
+                // },
+                child: isLightTheme
+                    ? Icon(
+                        Icons.wb_sunny,
+                        key: const ValueKey('sun'),
+                        size: theme.size.s6,
+                        color: Colors.orange,
+                      )
+                    : Icon(
+                        Icons.nightlight_round,
+                        key: const ValueKey('moon'),
+                        size: theme.size.s6,
+                        color: Colors.blueAccent,
+                      ),
               ),
-            ));
+            ),
+          ),
+        );
       },
     );
   }

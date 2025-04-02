@@ -14,11 +14,12 @@ class VerticalProgressIndicator extends StatelessWidget {
 
   //[currentProgress] it will be used to define the current progress.
   final int currentProgress;
-  const VerticalProgressIndicator(
-      {super.key,
-      required this.extent,
-      required this.totaProgressPoints,
-      required this.currentProgress});
+  const VerticalProgressIndicator({
+    super.key,
+    required this.extent,
+    required this.totaProgressPoints,
+    required this.currentProgress,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -11,8 +11,8 @@ class SequentialFadeIn extends StatefulWidget {
     this.delay = const Duration(milliseconds: 300),
     this.duration = const Duration(milliseconds: 500),
     this.start = true, // Default to start immediately
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   SequentialFadeInState createState() => SequentialFadeInState();

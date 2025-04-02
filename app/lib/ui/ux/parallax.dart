@@ -28,9 +28,9 @@ class ParallaxSection extends StatelessWidget {
               children: [
                 Positioned.fill(
                   child: AnimatedBuilder(
-                    animation: Scrollable.of(context)!.position,
+                    animation: Scrollable.of(context).position,
                     builder: (context, child) {
-                      double offset = Scrollable.of(context)!.position.pixels *
+                      double offset = Scrollable.of(context).position.pixels *
                           parallaxFactor;
                       return Transform.translate(
                         offset:

@@ -17,9 +17,10 @@ class DesktopContactLinks extends StatelessWidget {
       child: Column(
         children: [
           Expanded(
-              child: CustomVerticalDivider(
-            width: theme.size.s1,
-          )),
+            child: CustomVerticalDivider(
+              width: theme.size.s1,
+            ),
+          ),
           SizedBox(
             height: theme.size.s2,
           ),
@@ -56,9 +57,10 @@ class DesktopContactLinks extends StatelessWidget {
             height: theme.size.s2,
           ),
           Expanded(
-              child: CustomVerticalDivider(
-            width: theme.size.s1,
-          ))
+            child: CustomVerticalDivider(
+              width: theme.size.s1,
+            ),
+          ),
         ],
       ),
     );

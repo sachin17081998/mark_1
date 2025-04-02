@@ -9,14 +9,15 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-        color: Colors.white,
-        width: context.screenWidth,
-        height: context.screenHeight,
-        child: Center(
-          child: Text(
-            'About',
-            style: theme.textStyle.cover,
-          ),
-        ));
+      color: Colors.white,
+      width: context.screenWidth,
+      height: context.screenHeight,
+      child: Center(
+        child: Text(
+          'About',
+          style: theme.textStyle.cover,
+        ),
+      ),
+    );
   }
 }

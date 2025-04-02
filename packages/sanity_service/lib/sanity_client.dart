@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 /// SanityService class to handle fetching data from Sanity API.
@@ -47,7 +48,7 @@ class SanityService {
       throw Exception('SanityService is not initialized.');
     }
 
-    final encodedQuery = Uri.encodeComponent(query);
+    // final encodedQuery = Uri.encodeComponent(query);
     final url =
         'https://$_projectId.api.sanity.io/$_apiVersion/data/query/$_dataset?query=$query';
     // final url =
@@ -61,12 +62,9 @@ class SanityService {
           'Content-Type': 'application/json',
         },
       );
-      print('${response.statusCode} ${response.body} ');
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         final results = data['result'] as List;
-
-        print('Error fetching single document: ${results}');
 
         // Return the first document if available, otherwise null
         return results.isNotEmpty
@@ -77,7 +75,7 @@ class SanityService {
             'Failed to fetch data. HTTP Status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching single document: $e');
+      debugPrint('Error fetching single document: $e');
       throw Exception('Failed to fetch single document from Sanity.');
     }
   }
@@ -119,7 +117,7 @@ class SanityService {
             'Failed to fetch data. HTTP Status: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching documents: $e');
+      debugPrint('Error fetching documents: $e');
       throw Exception('Failed to fetch documents from Sanity.');
     }
   }

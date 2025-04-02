@@ -57,7 +57,7 @@ class NavItems extends StatelessWidget {
             'PROJECTS',
             style: theme.textStyle.labelBold
                 .copyWith(color: theme.colors.tertiary),
-          )
+          ),
         ];
         if (!withAnimation) {
           return SizedBox(

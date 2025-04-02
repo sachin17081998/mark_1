@@ -1,4 +1,3 @@
-import 'package:ds_kit/colors/app_colors.dart';
 import 'package:ds_kit/ds_kit.dart';
 import 'package:flutter/material.dart';
 

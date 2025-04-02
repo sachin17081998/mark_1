@@ -7,12 +7,13 @@ class CharacterDropText extends StatelessWidget {
 
   final AnimationController? controller;
 
-  const CharacterDropText(
-      {super.key,
-      required this.text,
-      this.style,
-      this.controller,
-      this.delay = const Duration(milliseconds: 50)});
+  const CharacterDropText({
+    super.key,
+    required this.text,
+    this.style,
+    this.controller,
+    this.delay = const Duration(milliseconds: 50),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +38,13 @@ class DelayedDropCharacter extends StatefulWidget {
 
   final AnimationController? controller;
 
-  const DelayedDropCharacter(
-      {super.key,
-      this.controller,
-      required this.character,
-      this.style,
-      required this.delay});
+  const DelayedDropCharacter({
+    super.key,
+    this.controller,
+    required this.character,
+    this.style,
+    required this.delay,
+  });
 
   @override
   DelayedDropCharacterState createState() => DelayedDropCharacterState();
@@ -60,9 +62,11 @@ class DelayedDropCharacterState extends State<DelayedDropCharacter>
       _controller = widget.controller!;
     } else {
       _controller = AnimationController(
-          vsync: this, duration: const Duration(milliseconds: 500));
+        vsync: this,
+        duration: const Duration(milliseconds: 500),
+      );
     }
-    _dropAnimation = Tween<Offset>(begin: Offset(0, -1), end: Offset.zero)
+    _dropAnimation = Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
         .animate(CurvedAnimation(parent: _controller, curve: Curves.bounceOut));
     Future.delayed(widget.delay, () {
       if (mounted && widget.controller == null) _controller.forward();

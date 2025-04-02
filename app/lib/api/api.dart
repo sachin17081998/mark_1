@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:mark_1/api/models/about.dart';
-import 'package:sanity_service/sanity_client.dart';
+import 'package:flutter/foundation.dart';
 
 class Api {
   static Future<About?> fetchAbout() async {
-    const query = '*[_type == "about"]';
+    // const query = '*[_type == "about"]';
 
     try {
       // final data = await SanityService.instance.fetchSingleDocument<About>(
@@ -13,16 +13,11 @@ class Api {
       //   fromJson: (json) => About.fromJson(json),
       // );
 
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       final data = About.fromJson(jsonDecode(mockAbout));
-      if (data != null) {
-        print('Title: ${data.firstName}, Body: ${data.lastName}');
-        return data;
-      } else {
-        print('No document found.');
-      }
+      return data;
     } catch (e) {
-      print('Error: $e');
+      debugPrint('Error: $e');
     }
     return null;
   }

@@ -9,14 +9,15 @@ class Qualifications extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-        color: Colors.orangeAccent,
-        width: context.screenWidth,
-        height: context.screenHeight,
-        child: Center(
-          child: Text(
-            'Qualifications',
-            style: theme.textStyle.cover,
-          ),
-        ));
+      color: Colors.orangeAccent,
+      width: context.screenWidth,
+      height: context.screenHeight,
+      child: Center(
+        child: Text(
+          'Qualifications',
+          style: theme.textStyle.cover,
+        ),
+      ),
+    );
   }
 }

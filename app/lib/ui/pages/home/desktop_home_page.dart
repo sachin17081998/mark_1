@@ -26,9 +26,13 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   void initState() {
     super.initState();
     _titleController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 800));
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
     _imageController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1000));
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
 
     // _titleController.forward();
     // _titleController.addStatusListener((status) {
@@ -63,103 +67,102 @@ class _DesktopHomePageState extends State<DesktopHomePage>
   Widget build(BuildContext context) {
     final store = di<AppStore>();
     final theme = Theme.of(context);
-    return Container(
-      child: Stack(
-        children: [
-          ParallaxSection(
-            parallaxFactor: 0.3,
-            child: Align(
-                alignment: Alignment.topCenter,
-                child: TypewriterText(
-                    controller: _titleController,
-                    text: store.aboutData.value!.firstName,
-                    style: theme.textStyle.cover
-                        .copyWith(color: theme.colors.primary))
+    return Stack(
+      children: [
+        ParallaxSection(
+          parallaxFactor: 0.3,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: TypewriterText(
+              controller: _titleController,
+              text: store.aboutData.value!.firstName,
+              style:
+                  theme.textStyle.cover.copyWith(color: theme.colors.primary),
+            ),
 
-                //     FadeInAnimation(
-                //   // duration: const Duration(milliseconds: 2000),
-                //   controller: _titleController,
-                //   child: Text(
-                //     store.aboutData.value!.firstName,
-                //     style: theme.textStyle.cover
-                //         .copyWith(color: theme.colors.primary),
-                //   ),
-                // )
-                ),
+            //     FadeInAnimation(
+            //   // duration: const Duration(milliseconds: 2000),
+            //   controller: _titleController,
+            //   child: Text(
+            //     store.aboutData.value!.firstName,
+            //     style: theme.textStyle.cover
+            //         .copyWith(color: theme.colors.primary),
+            //   ),
+            // )
           ),
-          Positioned.fill(
-            child: ParallaxSection(
-              parallaxFactor: 0.4,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    stops: const [0.25, 1],
-                    colors: [
-                      theme.colors.background,
-                      theme.colors.background.withAlpha(0)
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          ParallaxSection(
-            parallaxFactor: 0.5,
-            child: Align(
-              child: FadeInAnimation(
-                controller: _imageController,
-                // direction: SlideDirection.up,
-                // duration: const Duration(milliseconds: 1500),
-                child: Image.network(
-                  sanityImageUrl(store.aboutData.value!.coverImage.asset.ref),
-                ),
-              ),
-            ),
-          ),
-          Positioned.fill(
+        ),
+        Positioned.fill(
+          child: ParallaxSection(
+            parallaxFactor: 0.4,
             child: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
-                  stops: const [0.1, 1],
+                  stops: const [0.25, 1],
                   colors: [
                     theme.colors.background,
-                    theme.colors.background.withAlpha(0)
+                    theme.colors.background.withAlpha(0),
                   ],
                 ),
               ),
             ),
           ),
-
-          // progress bar
-          Positioned(
-            bottom: 50,
-            child: VisibilityDetector(
-                onVisibilityChanged: (info) async {
-                  print(info.visibleFraction);
-                  if (info.visibleFraction < 1) {
-                    await Future.delayed(const Duration(milliseconds: 100));
-                    store.setDestopNavSticky(true);
-                  }
-                  if (info.visibleFraction > 0.1) {
-                    await Future.delayed(const Duration(milliseconds: 100));
-                    store.setDestopNavSticky(false);
-                  }
-                },
-                key: UniqueKey(),
-                child: const NavItems()),
+        ),
+        ParallaxSection(
+          child: Align(
+            child: FadeInAnimation(
+              controller: _imageController,
+              // direction: SlideDirection.up,
+              // duration: const Duration(milliseconds: 1500),
+              child: Image.network(
+                sanityImageUrl(store.aboutData.value!.coverImage.asset.ref),
+              ),
+            ),
           ),
-          Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: theme.spacing.s32),
-                child: const DesktopContactLinks(),
-              ))
-        ],
-      ),
+        ),
+        Positioned.fill(
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                stops: const [0.1, 1],
+                colors: [
+                  theme.colors.background,
+                  theme.colors.background.withAlpha(0),
+                ],
+              ),
+            ),
+          ),
+        ),
+
+        // progress bar
+        Positioned(
+          bottom: 50,
+          child: VisibilityDetector(
+            onVisibilityChanged: (info) async {
+              if (info.visibleFraction < 1) {
+                await Future.delayed(const Duration(milliseconds: 100));
+                store.setDestopNavSticky(true);
+              }
+              if (info.visibleFraction > 0.1) {
+                await Future.delayed(const Duration(milliseconds: 100));
+                store.setDestopNavSticky(false);
+              }
+            },
+            key: UniqueKey(),
+            child: const NavItems(),
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: theme.spacing.s32),
+            child: const DesktopContactLinks(),
+          ),
+        ),
+      ],
     );
   }
 }
