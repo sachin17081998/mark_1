@@ -29,7 +29,10 @@ jobs:
         
     - name: Install Melos
       run: dart pub global activate melos
-
+    
+    - name: Clean Melos
+      run: melos clean
+    
     - name: Bootstrap Melos
       run: melos bootstrap
 
