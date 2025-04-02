@@ -1,5 +1,4 @@
 class SpacingTokens {
-
   static const s1 = 1.0;
   static const s2 = 2.0;
   static const s3 = 3.0;
@@ -18,5 +17,4 @@ class SpacingTokens {
   static const s52 = 52.0;
   static const s56 = 56.0;
   static const s60 = 60.0;
-  
 }

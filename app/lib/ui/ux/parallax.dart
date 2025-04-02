@@ -15,7 +15,8 @@ class ParallaxSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.screenWidth,height: context.screenHeight,
+      width: context.screenWidth,
+      height: context.screenHeight,
       child: LayoutBuilder(
         builder: (context, constraints) {
           return NotificationListener<ScrollUpdateNotification>(
@@ -29,10 +30,11 @@ class ParallaxSection extends StatelessWidget {
                   child: AnimatedBuilder(
                     animation: Scrollable.of(context)!.position,
                     builder: (context, child) {
-                      double offset =
-                          Scrollable.of(context)!.position.pixels * parallaxFactor;
+                      double offset = Scrollable.of(context)!.position.pixels *
+                          parallaxFactor;
                       return Transform.translate(
-                        offset: Offset(0, offset), // Moves element based on scroll
+                        offset:
+                            Offset(0, offset), // Moves element based on scroll
                         child: child,
                       );
                     },

@@ -14,11 +14,10 @@ class DesktopContactLinks extends StatelessWidget {
     // final store = di<AppStore>();
     return SizedBox(
       height: context.screenHeight * 0.6,
-      
       child: Column(
         children: [
           Expanded(
-              child:CustomVerticalDivider(
+              child: CustomVerticalDivider(
             width: theme.size.s1,
           )),
           SizedBox(

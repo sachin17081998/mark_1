@@ -69,13 +69,12 @@ class AppText extends ThemeExtension<AppText> {
 
   factory AppText.main() {
     return const AppText._internal(
-      cover:TextStyle(
-        fontFamily: _baseFamily,
-        package: 'ds_kit',
-        fontSize: 264,
-        fontWeight: FontWeight.w900,
-        letterSpacing: 50
-      ) ,
+      cover: TextStyle(
+          fontFamily: _baseFamily,
+          package: 'ds_kit',
+          fontSize: 264,
+          fontWeight: FontWeight.w900,
+          letterSpacing: 50),
       display: TextStyle(
         fontFamily: _baseFamily,
         package: 'ds_kit',
@@ -273,7 +272,8 @@ class AppText extends ThemeExtension<AppText> {
       specialSemiBold: specialSemiBold ?? this.specialSemiBold,
       specialMedium: specialMedium ?? this.specialMedium,
       specialMediumBold: specialMediumBold ?? this.specialMediumBold,
-      specialMediumSemiBold: specialMediumSemiBold ?? this.specialMediumSemiBold,
+      specialMediumSemiBold:
+          specialMediumSemiBold ?? this.specialMediumSemiBold,
       specialLarge: specialLarge ?? this.specialLarge,
       specialLargeBold: specialLargeBold ?? this.specialLargeBold,
       specialLargeSemiBold: specialLargeSemiBold ?? this.specialLargeSemiBold,
@@ -281,41 +281,61 @@ class AppText extends ThemeExtension<AppText> {
   }
 
   @override
-  ThemeExtension<AppText> lerp(covariant ThemeExtension<AppText>? other, double t) {
+  ThemeExtension<AppText> lerp(
+      covariant ThemeExtension<AppText>? other, double t) {
     if (other is! AppText) return this;
 
     return AppText._internal(
-       cover: TextStyle.lerp(cover, other.cover, t) ?? cover,
+      cover: TextStyle.lerp(cover, other.cover, t) ?? cover,
       display: TextStyle.lerp(display, other.display, t) ?? display,
-      displayBold: TextStyle.lerp(displayBold, other.displayBold, t) ?? displayBold,
-      displaySemiBold: TextStyle.lerp(displaySemiBold, other.displaySemiBold, t) ?? displaySemiBold,
+      displayBold:
+          TextStyle.lerp(displayBold, other.displayBold, t) ?? displayBold,
+      displaySemiBold:
+          TextStyle.lerp(displaySemiBold, other.displaySemiBold, t) ??
+              displaySemiBold,
       headline: TextStyle.lerp(headline, other.headline, t) ?? headline,
-      headlineBold: TextStyle.lerp(headlineBold, other.headlineBold, t) ?? headlineBold,
-      headlineSemiBold: TextStyle.lerp(headlineSemiBold, other.headlineSemiBold, t) ?? headlineSemiBold,
+      headlineBold:
+          TextStyle.lerp(headlineBold, other.headlineBold, t) ?? headlineBold,
+      headlineSemiBold:
+          TextStyle.lerp(headlineSemiBold, other.headlineSemiBold, t) ??
+              headlineSemiBold,
       title: TextStyle.lerp(title, other.title, t) ?? title,
       titleBold: TextStyle.lerp(titleBold, other.titleBold, t) ?? titleBold,
-      titleSemiBold: TextStyle.lerp(titleSemiBold, other.titleSemiBold, t) ?? titleSemiBold,
+      titleSemiBold: TextStyle.lerp(titleSemiBold, other.titleSemiBold, t) ??
+          titleSemiBold,
       label: TextStyle.lerp(label, other.label, t) ?? label,
       labelBold: TextStyle.lerp(labelBold, other.labelBold, t) ?? labelBold,
-      labelSemiBold: TextStyle.lerp(labelSemiBold, other.labelSemiBold, t) ?? labelSemiBold,
+      labelSemiBold: TextStyle.lerp(labelSemiBold, other.labelSemiBold, t) ??
+          labelSemiBold,
       body: TextStyle.lerp(body, other.body, t) ?? body,
       bodyBold: TextStyle.lerp(bodyBold, other.bodyBold, t) ?? bodyBold,
-      bodySemiBold: TextStyle.lerp(bodySemiBold, other.bodySemiBold, t) ?? bodySemiBold,
+      bodySemiBold:
+          TextStyle.lerp(bodySemiBold, other.bodySemiBold, t) ?? bodySemiBold,
       special: TextStyle.lerp(special, other.special, t) ?? special,
-      specialBold: TextStyle.lerp(specialBold, other.specialBold, t) ?? specialBold,
-      specialSemiBold: TextStyle.lerp(specialSemiBold, other.specialSemiBold, t) ?? specialSemiBold,
-      specialMedium: TextStyle.lerp(specialMedium, other.specialMedium, t) ?? specialMedium,
-      specialMediumBold: TextStyle.lerp(specialMediumBold, other.specialMediumBold, t) ?? specialMediumBold,
-      specialMediumSemiBold: TextStyle.lerp(specialMediumSemiBold, other.specialMediumSemiBold, t) ?? specialMediumSemiBold,
-      specialLarge: TextStyle.lerp(specialLarge, other.specialLarge, t) ?? specialLarge,
-      specialLargeBold: TextStyle.lerp(specialLargeBold, other.specialLargeBold, t) ?? specialLargeBold,
-      specialLargeSemiBold: TextStyle.lerp(specialLargeSemiBold, other.specialLargeSemiBold, t) ?? specialLargeSemiBold,
+      specialBold:
+          TextStyle.lerp(specialBold, other.specialBold, t) ?? specialBold,
+      specialSemiBold:
+          TextStyle.lerp(specialSemiBold, other.specialSemiBold, t) ??
+              specialSemiBold,
+      specialMedium: TextStyle.lerp(specialMedium, other.specialMedium, t) ??
+          specialMedium,
+      specialMediumBold:
+          TextStyle.lerp(specialMediumBold, other.specialMediumBold, t) ??
+              specialMediumBold,
+      specialMediumSemiBold: TextStyle.lerp(
+              specialMediumSemiBold, other.specialMediumSemiBold, t) ??
+          specialMediumSemiBold,
+      specialLarge:
+          TextStyle.lerp(specialLarge, other.specialLarge, t) ?? specialLarge,
+      specialLargeBold:
+          TextStyle.lerp(specialLargeBold, other.specialLargeBold, t) ??
+              specialLargeBold,
+      specialLargeSemiBold:
+          TextStyle.lerp(specialLargeSemiBold, other.specialLargeSemiBold, t) ??
+              specialLargeSemiBold,
     );
   }
 }
-
-
-
 
 // import 'package:flutter/material.dart';
 
@@ -333,7 +353,6 @@ class AppText extends ThemeExtension<AppText> {
 //   final TextStyle title;
 //   final TextStyle titleBold;
 //   final TextStyle titleSemiBold;
-
 
 //   final TextStyle label;
 //   final TextStyle labelBold;
@@ -410,7 +429,7 @@ class AppText extends ThemeExtension<AppText> {
 //       package: 'ds_kit',
 //       fontSize: 32,
 //       fontWeight: FontWeight.w800
-//     ), 
+//     ),
 //           titleSemiBold: TextStyle(
 //       fontFamily: _baseFamily,
 //       package: 'ds_kit',
@@ -434,7 +453,7 @@ class AppText extends ThemeExtension<AppText> {
 //       package: 'ds_kit',
 //       fontSize: 24,
 //       fontWeight: FontWeight.w600
-//     ), 
+//     ),
 //                body: TextStyle(
 //       fontFamily: _baseFamily,
 //       package: 'ds_kit',

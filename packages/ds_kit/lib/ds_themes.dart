@@ -16,8 +16,8 @@ MyColors myColors = Theme.of(context).colors;
 extension DsThemeExtended on ThemeData {
   AppColors get colors => extension<AppColors>() ?? AppColors.light();
   AppText get textStyle => extension<AppText>() ?? AppText.main();
-  
+
   Spacing get spacing => extension<Spacing>() ?? Spacing();
-  
+
   Sizing get size => extension<Sizing>() ?? Sizing();
 }

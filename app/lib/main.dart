@@ -22,14 +22,16 @@ class MyApp extends StatelessWidget {
     return Observer(
       builder: (context) {
         return AnimatedSwitcher(
-           duration: const Duration(milliseconds: 800),switchInCurve:Curves.easeIn,switchOutCurve: Curves.easeOut,  
+          duration: const Duration(milliseconds: 800),
+          switchInCurve: Curves.easeIn,
+          switchOutCurve: Curves.easeOut,
           child: MaterialApp(
-             key: ValueKey<bool>(store.appTheme.value == ThemeMode.light),
+            key: ValueKey<bool>(store.appTheme.value == ThemeMode.light),
             theme: ThemeData.light().copyWith(
-          extensions: [AppText.main()], // Use light theme
+              extensions: [AppText.main()], // Use light theme
             ),
             darkTheme: ThemeData.dark().copyWith(
-          extensions: [AppColors.dark(), AppText.main()], // Use dark theme
+              extensions: [AppColors.dark(), AppText.main()], // Use dark theme
             ),
             themeMode: store.appTheme.value, // Force light mode
             home: const RootApp(),
@@ -45,21 +47,20 @@ class RootApp extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
-      final store = di<AppStore>();
+    final store = di<AppStore>();
     return Observer(
       builder: (_) {
-       
         // Show loading indicator while initializing
-        if (!store.isStoreInitilized.value && store.errorMessage.value == null) {
+        if (!store.isStoreInitilized.value &&
+            store.errorMessage.value == null) {
           return const Scaffold(
             backgroundColor: Colors.red,
             body: Center(child: CircularProgressIndicator()),
           );
         }
-            
+
         // Show error screen if initialization failed
         if (store.errorMessage.value != null) {
           return ErrorScreen(
@@ -67,13 +68,12 @@ class RootApp extends StatelessWidget {
             onRetry: () => store.initializeStore(), // Retry logic
           );
         }
-            
+
         // Show the main content if everything is loaded
         return const Scaffold(
-          body:MainScreen(),
+          body: MainScreen(),
         );
       },
     );
   }
 }
-

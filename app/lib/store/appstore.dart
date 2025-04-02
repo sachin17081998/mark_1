@@ -20,11 +20,10 @@ class AppStore {
   Observable<About?> aboutData = Observable(null);
 
 //componenet related observables
-Observable<int> currentPageIndex = Observable(0);  
-Observable<bool> makeDesktopNavSticky=Observable(false);
+  Observable<int> currentPageIndex = Observable(0);
+  Observable<bool> makeDesktopNavSticky = Observable(false);
 
-Observable<bool> startDesktopNavAnimation=Observable(false);
-
+  Observable<bool> startDesktopNavAnimation = Observable(false);
 
   void setStoreInitilization(bool value) {
     runInAction(() {
@@ -62,15 +61,16 @@ Observable<bool> startDesktopNavAnimation=Observable(false);
     });
   }
 
-  void toggleTheme(){
+  void toggleTheme() {
     runInAction(() {
-      if(appTheme.value == ThemeMode.light) {
+      if (appTheme.value == ThemeMode.light) {
         appTheme.value = ThemeMode.dark;
       } else {
         appTheme.value = ThemeMode.light;
       }
     });
   }
+
   Future<void> initializeStore() async {
     try {
       _initializeSanity();

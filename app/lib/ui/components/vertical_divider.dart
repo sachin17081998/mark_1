@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 class CustomVerticalDivider extends StatelessWidget {
   final double width;
-  const CustomVerticalDivider({required this.width,super.key});
+  const CustomVerticalDivider({required this.width, super.key});
 
   @override
   Widget build(BuildContext context) {
-   final theme=Theme.of(context);
+    final theme = Theme.of(context);
     return Container(
       width: width,
-   height:double.infinity,
+      height: double.infinity,
       color: theme.colors.tertiary,
     );
   }

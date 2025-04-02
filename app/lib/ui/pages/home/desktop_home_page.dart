@@ -153,11 +153,11 @@ class _DesktopHomePageState extends State<DesktopHomePage>
                 child: const NavItems()),
           ),
           Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding:  EdgeInsets.symmetric(horizontal: theme.spacing.s32),  
-              child: const DesktopContactLinks(),
-            ))
+              alignment: Alignment.centerRight,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: theme.spacing.s32),
+                child: const DesktopContactLinks(),
+              ))
         ],
       ),
     );

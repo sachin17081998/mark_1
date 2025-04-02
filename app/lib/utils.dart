@@ -19,9 +19,8 @@ String sanityImageUrl(String ref, {int? width, int? height}) {
   return '$baseUrl/$imageId-$size.$format';
 }
 
-
 extension ScreenSizeExtension on BuildContext {
   bool get isDesktop => MediaQuery.of(this).size.width > 600;
-  double get screenWidth  => MediaQuery.of(this).size.width;
-  double get screenHeight  => MediaQuery.of(this).size.height;
+  double get screenWidth => MediaQuery.of(this).size.width;
+  double get screenHeight => MediaQuery.of(this).size.height;
 }

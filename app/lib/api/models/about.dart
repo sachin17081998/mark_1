@@ -6,19 +6,19 @@ part 'about.g.dart';
 class About {
   @JsonKey(name: '_createdAt')
   final String createdAt;
-  
+
   @JsonKey(name: '_id')
   final String id;
-  
+
   @JsonKey(name: '_rev')
   final String rev;
-  
+
   @JsonKey(name: '_type')
   final String type;
-  
+
   @JsonKey(name: '_updatedAt')
   final String updatedAt;
-  
+
   final int age;
   final List<Contact> contact;
   final ImageAsset coverImage;
@@ -73,7 +73,8 @@ class Contact {
     this.contactLink,
   });
 
-  factory Contact.fromJson(Map<String, dynamic> json) => _$ContactFromJson(json);
+  factory Contact.fromJson(Map<String, dynamic> json) =>
+      _$ContactFromJson(json);
   Map<String, dynamic> toJson() => _$ContactToJson(this);
 }
 
@@ -85,7 +86,8 @@ class ImageAsset {
 
   ImageAsset({required this.type, required this.asset});
 
-  factory ImageAsset.fromJson(Map<String, dynamic> json) => _$ImageAssetFromJson(json);
+  factory ImageAsset.fromJson(Map<String, dynamic> json) =>
+      _$ImageAssetFromJson(json);
   Map<String, dynamic> toJson() => _$ImageAssetToJson(this);
 }
 

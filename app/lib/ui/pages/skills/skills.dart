@@ -9,7 +9,7 @@ class Skills extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      color: Colors.blueAccent,
+        color: Colors.blueAccent,
         width: context.screenWidth,
         height: context.screenHeight,
         child: Center(

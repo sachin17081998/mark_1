@@ -14,7 +14,7 @@ class Api {
       // );
 
       await Future.delayed(Duration(seconds: 2));
-      final data=About.fromJson(jsonDecode(mockAbout));
+      final data = About.fromJson(jsonDecode(mockAbout));
       if (data != null) {
         print('Title: ${data.firstName}, Body: ${data.lastName}');
         return data;
@@ -28,7 +28,7 @@ class Api {
   }
 }
 
-const mockAbout='''{
+const mockAbout = '''{
   "_createdAt": "2024-12-24T16:37:37Z",
   "_id": "3ae60234-ceaa-4b2b-875b-8e839e7fd4f2",
   "_rev": "NFtv7L0LfmRuNXtL4gvYMK",

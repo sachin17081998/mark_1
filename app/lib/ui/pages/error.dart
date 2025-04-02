@@ -4,7 +4,8 @@ class ErrorScreen extends StatelessWidget {
   final String errorMessage;
   final VoidCallback onRetry;
 
-  const ErrorScreen({super.key, required this.errorMessage, required this.onRetry});
+  const ErrorScreen(
+      {super.key, required this.errorMessage, required this.onRetry});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,10 @@ class ErrorScreen extends StatelessWidget {
             const SizedBox(height: 20),
             const Text(
               'An error occurred!',
-              style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
             Text(

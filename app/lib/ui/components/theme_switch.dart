@@ -1,5 +1,3 @@
-
-
 import 'package:ds_kit/ds_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -104,4 +102,3 @@ class ThemeSwitchState extends State<ThemeSwitch>
     );
   }
 }
- 

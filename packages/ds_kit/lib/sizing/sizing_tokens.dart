@@ -1,4 +1,3 @@
-
 class SizingTokens {
   static const quarter = 1.0;
   static const half = 2.0;
@@ -19,5 +18,4 @@ class SizingTokens {
   static const s14 = 56.0;
   static const s15 = 60.0;
   static const s16 = 64.0;
-  
 }

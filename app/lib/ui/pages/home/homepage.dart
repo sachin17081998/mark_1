@@ -9,12 +9,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme=Theme.of(context);
-    return  Container(
-      width:context.screenWidth ,
+    final theme = Theme.of(context);
+    return Container(
+      width: context.screenWidth,
       height: context.screenHeight,
       color: theme.colors.background,
-      child: context.isDesktop ?const DesktopHomePage() : const MobileHomePage(),
+      child:
+          context.isDesktop ? const DesktopHomePage() : const MobileHomePage(),
     );
   }
-  }
+}

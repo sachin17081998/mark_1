@@ -30,7 +30,8 @@ class VerticalProgressIndicator extends StatelessWidget {
           height: context.screenHeight * 0.6,
           color: theme.colors.tertiary,
         ),
-        AnimatedContainer(duration: const Duration(milliseconds: 500),
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
           width: theme.size.s2,
           height: (currentProgress / totaProgressPoints) * extent,
           decoration: BoxDecoration(

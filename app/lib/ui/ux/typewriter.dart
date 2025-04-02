@@ -27,8 +27,8 @@ class TypewriterTextState extends State<TypewriterText>
   void initState() {
     super.initState();
     if (widget.controller != null) {
-      _charCount =
-          IntTween(begin: 0, end: widget.text.length).animate(widget.controller!);
+      _charCount = IntTween(begin: 0, end: widget.text.length)
+          .animate(widget.controller!);
     } else {
       _controller = AnimationController(vsync: this, duration: widget.duration);
       _charCount =
